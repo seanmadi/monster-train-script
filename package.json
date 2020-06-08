@@ -1,0 +1,57 @@
+{
+  "name": "monster-train-bot-react",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1",
+    "twitch-bot": "^1.3.5"
+  },
+  "devDependencies": {
+    "electron": "^9.0.2",
+    "electron-builder": "^22.7.0"
+  },
+  "scripts": {
+    "start": "nf start -p 3000",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron": "electron .",
+    "electron-start": "node src/electron/start-react",
+    "react-start": "react-scripts start",
+    "build-electron": "mkdir build\\src && robocopy electron build/electron /S & robocopy src/shared build/src/shared /S",
+    "package": "npm run build & npm run build-electron & electron-builder build --win -c.extraMetadata.main=build/electron/main.js --publish never",
+    "postinstall": "install-app-deps"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "homepage": "./",
+  "main": "src/electron/main.js",
+  "build": {
+    "appId": "com.seanmadi.monster-train-bot-react",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "public"
+    }
+  }
+}
